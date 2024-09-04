@@ -5,6 +5,8 @@ import (
 	"strings"
 )
 
+/// entry function for encoding process
+/// argument: fileContent - file content to compress
 func Encode(fileContent []byte) []byte {
 	/// character -> frequency
 	var freqCount map[byte]int = make(map[byte]int)
@@ -16,7 +18,7 @@ func Encode(fileContent []byte) []byte {
 	var rootNode *TreeNode = BuildTree(freqCount, charCodes)
 	/// encodings will be stored in charCodes
 	rootNode.EncodeNode(charCodes, "")
-	var encodedString string = mainEncoding(fileContent, charCodes)
+	var encodedString string = coreEncoding(fileContent, charCodes)
 	var encodedFileHeader string
 	for k, v := range charCodes {
 		encodedFileHeader = encodedFileHeader + fmt.Sprintf("%s%s%s%s", k, KeyValueSeparator, v, KeyValuePairSeparator)
@@ -27,9 +29,12 @@ func Encode(fileContent []byte) []byte {
 	return encodedFileContent
 }
 
-func mainEncoding(fileContent []byte, charCodes map[string]string) string {
+/// core encoding function
+/// argument: fileContent - actual file content to encode
+/// argument: charCodes - map<huffman encoded bit sequence, character>
+func coreEncoding(fileContent []byte, charCodes map[string]string) string {
 	var output string
-	// character -> encoded bit string
+	/// map<character, huffman encoded bit sequence>
 	var reverseCharCodes map[string]string = make(map[string]string)
 	for k, v := range charCodes {
 		reverseCharCodes[v] = k

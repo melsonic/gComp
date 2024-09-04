@@ -4,6 +4,8 @@ import (
 	"strings"
 )
 
+/// main decode function
+/// argument: encoded file content
 func Decode(input []byte) string {
 	var fileContent string = string(input)
 	// fileContent structure -> <Header<\n>Encoding>
@@ -18,7 +20,9 @@ func Decode(input []byte) string {
 	return DecodeUtil(contentToDecode, charCodes)
 }
 
-// / encoded bit string, character codes(bit string -> character)
+/// encoded bit string, character codes(bit string -> character)
+/// argument: encodedString - actual content to decode 
+/// argument: charCodes - map<huffman encoded bit sequence, character> 
 func DecodeUtil(encodedString string, charCodes map[string]string) string {
 	var output string
 	var curr string

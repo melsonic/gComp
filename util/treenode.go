@@ -13,12 +13,14 @@ type TreeNode struct {
 	right      *TreeNode
 }
 
-// / check if the current node is child node
+/// check if the current node is child node
 func (f *TreeNode) IsEmpty() bool {
 	return ((f.left == nil) && (f.right == nil))
 }
 
-// / get the encoded bit strings
+/// get the encoded bit strings
+/// argument: charCodes - map<huffman encoded bit sequence, character> 
+/// currPath: current path from root to current node
 func (f *TreeNode) EncodeNode(charCodes map[string]string, currPath string) {
 	if f == nil {
 		return
@@ -80,6 +82,9 @@ func (pq *PriorityQueue) Pop() any {
 	return item
 }
 
+/// build huffman tree from the available frequency count table 
+/// argument: freqCount: character frequency count table 
+/// argument: charCodes - map<huffman encoded bit sequence, character> 
 func BuildTree(freqCount map[byte]int, charCodes map[string]string) *TreeNode {
 	pq := make(PriorityQueue, len(freqCount))
 	i := 0

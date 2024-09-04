@@ -22,6 +22,7 @@ func main() {
 	}
 	switch encodeDecode {
 	case 1:
+    /// encoding a file
 		fmt.Printf("Enter filename to encode : ")
 		fmt.Scan(&fileName)
 		fileContent, fileReadError = os.ReadFile(fileName)
@@ -40,6 +41,7 @@ func main() {
 		fmt.Println("file compressed successfully")
 		break
 	case 2:
+    /// decoding a encoded file
 		fmt.Printf("Enter filename to decode : ")
 		fmt.Scan(&fileName)
 		fileContent, fileReadError = os.ReadFile(fileName)

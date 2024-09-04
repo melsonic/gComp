@@ -6,7 +6,8 @@ func PrintOutputWithCaption(caption string, output string) {
 	fmt.Printf("%-20s => %s\n\n", caption, output)
 }
 
-// convert the string representation of encoded bits to actual bits
+/// convert the string representation of encoded bits to actual bits
+/// actual compression happends here
 func StringToBits(bitString string) []byte {
 	var output []byte
 	for i := 0; i < len(bitString); i += 8 {
@@ -23,7 +24,8 @@ func StringToBits(bitString string) []byte {
 	return output
 }
 
-// convert []byte to string representation of bits
+/// convert []byte(bit sequence) to string representation of bits
+/// argument: input - slice of bytes or bit sequence
 func BitsToString(input []byte) string {
 	var bitString string
 	for idx, inputByte := range input {
