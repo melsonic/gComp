@@ -32,6 +32,7 @@ func (f *TreeNode) EncodeNode(charCodes map[string]string, currPath string) {
 	f.right.EncodeNode(charCodes, currPath+"1")
 }
 
+/// Print the whole Tree rooted @TreeNode f using bfs
 func (f *TreeNode) PrintTree() {
 	if f == nil {
 		return
@@ -53,8 +54,10 @@ func (f *TreeNode) PrintTree() {
 
 type PriorityQueue []*TreeNode
 
+/// fetch the length of the priority queue
 func (pq PriorityQueue) Len() int { return len(pq) }
 
+/// comparator for priority queue heap
 func (pq PriorityQueue) Less(i, j int) bool {
 	return pq[i].count < pq[j].count
 }
@@ -65,6 +68,8 @@ func (pq PriorityQueue) Swap(i, j int) {
 	pq[j].index = j
 }
 
+/// push element to priority queue
+/// argument: x - element to push
 func (pq *PriorityQueue) Push(x any) {
 	n := len(*pq)
 	item := x.(*TreeNode)
@@ -72,6 +77,7 @@ func (pq *PriorityQueue) Push(x any) {
 	*pq = append(*pq, item)
 }
 
+/// pop element from priority queue
 func (pq *PriorityQueue) Pop() any {
 	old := *pq
 	n := len(old)
