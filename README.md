@@ -108,6 +108,9 @@ Now using the **key-value separator** i.e. `-<>~`, we can build the **character 
 <br/>
 Since, we have now access to both the encoded bit sequence and the character encodings table, we can now easily retrieve the original file content.
 
+### Conclusion
+Just like all good things, it comes with its caveat. This application also has its caveat. The application only works great with large size files. The header overhead sometimes becomes much more than the original file content for small-sized files.
+
 ### Application Specific Details 📃
 
 - First build the application by running `make`.
